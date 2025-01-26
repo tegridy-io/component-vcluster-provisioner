@@ -1,0 +1,5 @@
+parameters:
+  vcluster_provisioner:
+    =_metadata:
+      multi_tenant: true
+    namespace: syn-vcluster-provisioner
