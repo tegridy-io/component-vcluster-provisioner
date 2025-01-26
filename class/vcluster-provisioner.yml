@@ -1,11 +1,40 @@
 parameters:
   kapitan:
+    dependencies:
+      - type: helm
+        source: ${vcluster_provisioner:charts:vcluster:source}
+        chart_name: vcluster
+        version: ${vcluster_provisioner:charts:vcluster:version}
+        output_path: ${_base_directory}/helmcharts/vcluster/${vcluster_provisioner:charts:vcluster:version}
+
     compile:
-      - input_paths:
-          - ${_base_directory}/component/app.jsonnet
-        input_type: jsonnet
-        output_path: .
+      # - input_paths:
+      #     - ${_base_directory}/component/app.jsonnet
+      #   input_type: jsonnet
+      #   output_path: .
       - input_paths:
           - ${_base_directory}/component/main.jsonnet
+        input_type: jsonnet
+        output_path: vcluster-provisioner/
+      # Helm: vCluster
+      - input_paths:
+          - ${_base_directory}/component/helm/vcluster.jsonnet
+        input_type: jsonnet
+        output_path: ${_base_directory}/helmcharts/vcluster/${vcluster_provisioner:charts:vcluster:version}/
+      - input_type: helm
+        output_type: yaml
+        input_paths:
+          - ${_base_directory}/helmcharts/vcluster/${vcluster_provisioner:charts:vcluster:version}
+        output_path: vcluster-provisioner/
+        helm_values_files:
+          - ${_base_directory}/helmcharts/vcluster/${vcluster_provisioner:charts:vcluster:version}/helm-component.yaml
+          - ${_base_directory}/helmcharts/vcluster/${vcluster_provisioner:charts:vcluster:version}/helm-overrides.yaml
+        helm_params:
+          name: ${cluster:name}
+          namespace: ${vcluster_provisioner:infrastructure:namespace:name}
+          output_file: 10_helmchart.yaml
+      # Pipeline
+      - input_paths:
+          - ${_base_directory}/component/pipeline.jsonnet
         input_type: jsonnet
         output_path: vcluster-provisioner/
