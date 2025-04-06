@@ -3,6 +3,8 @@ parameters:
     =_metadata:
       multi_tenant: true
 
+    _clusterName: ${cluster:name}
+
     charts:
       vcluster:
         source: https://charts.loft.sh
@@ -52,6 +54,11 @@ parameters:
       k3s:
         enabled: true
         resources: {}
+      ingress:
+        enabled: true
+        host: 'api.mycluster.local'
+        labels: {}
+        annotations: {}
 
     sync:
       fromHost: {}

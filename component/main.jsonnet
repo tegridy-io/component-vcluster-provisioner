@@ -18,7 +18,32 @@ local namespace = kube.Namespace(params.infrastructure.namespace.name) {
   },
 };
 
+local route = {
+  apiVersion: 'route.openshift.io/v1',
+  kind: 'Route',
+  metadata: {
+    name: params._clusterName,
+    namespace: params.infrastructure.namespace.name,
+  },
+  spec: {
+    host: params.components.ingress.host,
+    port: {
+      targetPort: 'https',
+    },
+    tls: {
+      termination: 'passthrough',
+    },
+    to: {
+      kind: 'Service',
+      name: params._clusterName,
+      weight: 100,
+    },
+    wildcardPolicy: 'None',
+  },
+};
+
 // Define outputs below
 {
   '00_namespace': namespace,
+  [if params.infrastructure.type == 'openshift' then '10_route']: route,
 }

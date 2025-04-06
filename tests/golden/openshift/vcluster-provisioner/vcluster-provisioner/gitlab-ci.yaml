@@ -9,6 +9,7 @@ apply:
     - master
   script:
     - kubectl apply -f ${PATH_MANIFESTS}
+    - kubectl apply -f ${PATH_ROUTE}
   stage: apply
   when: manual
 diff:
@@ -18,6 +19,7 @@ diff:
     - master
   script:
     - kubectl diff -f ${PATH_MANIFESTS} || [ $? -eq 1 ]
+    - kubectl diff -f ${PATH_ROUTE} || [ $? -eq 1 ]
   stage: diff
 stages:
   - diff

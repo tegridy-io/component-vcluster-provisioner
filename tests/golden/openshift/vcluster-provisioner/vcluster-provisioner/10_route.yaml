@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: c-green-test-1234
+  namespace: target-namespace
+spec:
+  host: api.mycluster.local
+  port:
+    targetPort: https
+  tls:
+    termination: passthrough
+  to:
+    kind: Service
+    name: c-green-test-1234
+    weight: 100
+  wildcardPolicy: None

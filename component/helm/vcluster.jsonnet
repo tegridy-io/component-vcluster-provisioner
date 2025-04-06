@@ -40,6 +40,13 @@ local component = com.makeMergeable({
       //   image: params.images.k0s,
       // }
     },
+    ingress: {
+      annotations: {
+        'nginx.ingress.kubernetes.io/backend-protocol': 'HTTPS',
+        'nginx.ingress.kubernetes.io/ssl-passthrough': 'true',
+        'nginx.ingress.kubernetes.io/ssl-redirect': 'true',
+      },
+    } + com.makeMergeable(params.components.ingress),
     statefulSet: {
       image: params.images.vcluster,
       imagePullPolicy: 'IfNotPresent',
@@ -120,7 +127,15 @@ local component = com.makeMergeable({
   },
 });
 
+local openshift = if params.infrastructure.type == 'openshift' then com.makeMergeable({
+  controlPlane: {
+    ingress: {
+      enabled: false,
+    },
+  },
+}) else {};
+
 {
-  'helm-component': component,
+  'helm-component': component + openshift,
   'helm-overrides': overrides,
 }
