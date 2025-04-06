@@ -7,7 +7,7 @@
       "name": "vCluster Provisioner",
       "slug": "vcluster-provisioner",
       "parameter_key": "vcluster_provisioner",
-      "test_cases": "defaults",
+      "test_cases": "defaults openshift",
       "add_lib": "n",
       "add_pp": "n",
       "add_golden": "y",

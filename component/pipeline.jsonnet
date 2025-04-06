@@ -5,7 +5,6 @@ local inv = kap.inventory();
 
 // The hiera parameters for the component
 local params = inv.parameters.vcluster_provisioner;
-local manifestsHelm = 'manifests/vcluster-provisioner/10_helmchart.yaml';
 
 local pipeline = {
   stages: [
@@ -15,7 +14,8 @@ local pipeline = {
   variables: {
     K8S_API_URL: '${K8S_API_URL}',
     K8S_TOKEN: '${K8S_TOKEN}',
-    MANIFESTS_PATH: manifestsHelm,
+    PATH_MANIFESTS: 'manifests/vcluster-provisioner/10_helmchart.yaml',
+    PATH_ROUTE: 'manifests/vcluster-provisioner/10_route.yaml',
   },
   '.openshift': {
     image: '%(registry)s/%(repository)s:%(tag)s' % params.images.kubectl,
@@ -29,8 +29,8 @@ local pipeline = {
       '.openshift',
     ],
     script: [
-      'kubectl diff -f ${MANIFESTS_PATH} || [ $? -eq 1 ]',
-    ],
+      'kubectl diff -f ${PATH_MANIFESTS} || [ $? -eq 1 ]',
+    ] + if params.infrastructure.type == 'openshift' then [ 'kubectl diff -f ${PATH_ROUTE} || [ $? -eq 1 ]' ] else [],
     only: [
       'master',
     ],
@@ -41,8 +41,8 @@ local pipeline = {
       '.openshift',
     ],
     script: [
-      'kubectl apply -f ${MANIFESTS_PATH}',
-    ],
+      'kubectl apply -f ${PATH_MANIFESTS}',
+    ] + if params.infrastructure.type == 'openshift' then [ 'kubectl apply -f ${PATH_ROUTE}' ] else [],
     when: 'manual',
     only: [
       'master',

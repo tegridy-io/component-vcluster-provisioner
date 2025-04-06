@@ -1,0 +1,6 @@
+# Overwrite parameters here
+
+parameters:
+  vcluster_provisioner:
+    infrastructure:
+      type: openshift
