@@ -36,6 +36,11 @@ default:: 'kubernetes'
 
 The type of infrastructure to deploy to.
 
+[NOTE]
+====
+Only type `kubernetes` and `openshift` are supported.
+====
+
 === `infrastructure.namespace`
 
 [horizontal]
@@ -133,6 +138,38 @@ components:
 ----
 
 Configure the resources for the k3s component.
+
+
+== `components.ingress`
+
+[horizontal]
+type:: dictionary
+
+Configure the ingress component.
+
+=== `components.ingress.enabled`
+
+[horizontal]
+type:: boolean
+default:: true
+
+Enable the ingress component.
+
+=== `components.ingress.host`
+
+[horizontal]
+type:: string
+default:: 'api.mycluster.local'
+
+The host to use for the ingress component.
+
+=== `components.ingress.annotations` and `components.ingress.labels`
+
+[horizontal]
+type:: dictionary
+default:: {}
+
+Configure the annotations and labels for the ingress component.
 
 
 == `sync`
