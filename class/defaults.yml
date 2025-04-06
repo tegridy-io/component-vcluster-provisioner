@@ -6,7 +6,7 @@ parameters:
     charts:
       vcluster:
         source: https://charts.loft.sh
-        version: 0.22.4
+        version: ${vcluster_provisioner:images:vcluster:tag}
       cloudflared:
         source: https://cloudflare.github.io/helm-charts
         version: 0.3.2
@@ -15,7 +15,7 @@ parameters:
       vcluster:
         registry: ghcr.io
         repository: loft-sh/vcluster-pro
-        tag: 0.22.4
+        tag: 0.24.0
       k3s:
         registry: docker.io
         repository: rancher/k3s
