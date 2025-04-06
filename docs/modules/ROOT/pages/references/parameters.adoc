@@ -2,13 +2,168 @@
 
 The parent key for all of the following parameters is `vcluster_provisioner`.
 
-== `namespace`
+
+== `charts`
+
+[horizontal]
+type:: dictionary
+default:: see `class/defaults.yml`
+
+Configure the charts to deploy.
+
+
+== `images`
+
+[horizontal]
+type:: dictionary
+default:: see `class/defaults.yml`
+
+Configure the images to use.
+
+
+== `infrastructure`
+
+[horizontal]
+type:: dictionary
+
+Configure the infrastructure.
+
+=== `infrastructure.type`
 
 [horizontal]
 type:: string
-default:: `syn-vcluster-provisioner`
+default:: 'kubernetes'
 
-The namespace in which to deploy this component.
+The type of infrastructure to deploy to.
+
+=== `infrastructure.namespace`
+
+[horizontal]
+type:: dictionary
+default::
++
+[source,yaml]
+----
+infrastructure:
+  namespace:
+    annotations: {}
+    labels: {}
+    name: target-namespace
+----
+
+Configure the namespace of the target infrastructure.
+
+
+== `components.vcluster`
+
+[horizontal]
+type:: dictionary
+
+Configure the vcluster component.
+
+
+=== `components.vcluster.resources`
+
+[horizontal]
+type:: dictionary
+default::
++
+[source,yaml]
+----
+components:
+  vcluster:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 512Mi
+      limits:
+        memory: 2Gi
+----
+
+Configure the resources for the vcluster component.
+
+=== `components.vcluster.storageClass`
+
+[horizontal]
+type:: string
+default:: ''
+
+The storage class to use for the vcluster component.
+
+=== `components.vcluster.storageSize`
+
+[horizontal]
+type:: string
+default:: '5Gi'
+
+The storage size to use for the vcluster component.
+
+
+== `components.k3s`
+
+[horizontal]
+type:: dictionary
+
+Configure the k3s component.
+
+=== `components.k3s.enabled`
+
+[horizontal]
+type:: boolean
+default:: true
+
+Use K3s as the vCluster distribution.
+
+=== `components.k3s.resources`
+
+[horizontal]
+type:: dictionary
+default::
++
+[source,yaml]
+----
+components:
+  k3s:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 64Mi
+      limits:
+        memory: 256Mi
+----
+
+Configure the resources for the k3s component.
+
+
+== `sync`
+
+[horizontal]
+type:: dictionary
+default::
++
+[source,yaml]
+----
+sync:
+  fromHost: {}
+  toHost: {}
+----
+
+Configure the sync configuration, see https://www.vcluster.com/docs/vcluster/next/configure/vcluster-yaml/sync[vCluster Sync].
+
+
+== `helmValues`
+
+[horizontal]
+type:: dictionary
+default::
++
+[source,yaml]
+----
+helmValues:
+  vcluster: {}
+----
+
+Override the default values for the helm chart.
 
 
 == Example
