@@ -1,0 +1,388 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: vc-c-green-test-1234
+  namespace: target-namespace
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: vc-workload-c-green-test-1234
+  namespace: target-namespace
+---
+apiVersion: v1
+data:
+  config.yaml: Y29udHJvbFBsYW5lOgogIGFkdmFuY2VkOgogICAgZGVmYXVsdEltYWdlUmVnaXN0cnk6ICIiCiAgICBnbG9iYWxNZXRhZGF0YToKICAgICAgYW5ub3RhdGlvbnM6IHt9CiAgICBoZWFkbGVzc1NlcnZpY2U6CiAgICAgIGFubm90YXRpb25zOiB7fQogICAgICBsYWJlbHM6IHt9CiAgICBzZXJ2aWNlQWNjb3VudDoKICAgICAgYW5ub3RhdGlvbnM6IHt9CiAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgaW1hZ2VQdWxsU2VjcmV0czogW10KICAgICAgbGFiZWxzOiB7fQogICAgICBuYW1lOiAiIgogICAgdmlydHVhbFNjaGVkdWxlcjoKICAgICAgZW5hYmxlZDogZmFsc2UKICAgIHdvcmtsb2FkU2VydmljZUFjY291bnQ6CiAgICAgIGFubm90YXRpb25zOiB7fQogICAgICBlbmFibGVkOiB0cnVlCiAgICAgIGltYWdlUHVsbFNlY3JldHM6IFtdCiAgICAgIGxhYmVsczoge30KICAgICAgbmFtZTogIiIKICBiYWNraW5nU3RvcmU6CiAgICBkYXRhYmFzZToKICAgICAgZW1iZWRkZWQ6CiAgICAgICAgZW5hYmxlZDogZmFsc2UKICAgICAgZXh0ZXJuYWw6CiAgICAgICAgY2FGaWxlOiAiIgogICAgICAgIGNlcnRGaWxlOiAiIgogICAgICAgIGNvbm5lY3RvcjogIiIKICAgICAgICBkYXRhU291cmNlOiAiIgogICAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICAgICAga2V5RmlsZTogIiIKICAgIGV0Y2Q6CiAgICAgIGRlcGxveToKICAgICAgICBlbmFibGVkOiBmYWxzZQogICAgICAgIGhlYWRsZXNzU2VydmljZToKICAgICAgICAgIGFubm90YXRpb25zOiB7fQogICAgICAgIHNlcnZpY2U6CiAgICAgICAgICBhbm5vdGF0aW9uczoge30KICAgICAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgICBzdGF0ZWZ1bFNldDoKICAgICAgICAgIGFubm90YXRpb25zOiB7fQogICAgICAgICAgZW5hYmxlU2VydmljZUxpbmtzOiB0cnVlCiAgICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgICBlbnY6IFtdCiAgICAgICAgICBleHRyYUFyZ3M6IFtdCiAgICAgICAgICBoaWdoQXZhaWxhYmlsaXR5OgogICAgICAgICAgICByZXBsaWNhczogMQogICAgICAgICAgaW1hZ2U6CiAgICAgICAgICAgIHJlZ2lzdHJ5OiByZWdpc3RyeS5rOHMuaW8KICAgICAgICAgICAgcmVwb3NpdG9yeTogZXRjZAogICAgICAgICAgICB0YWc6IDMuNS4xNS0wCiAgICAgICAgICBpbWFnZVB1bGxQb2xpY3k6ICIiCiAgICAgICAgICBsYWJlbHM6IHt9CiAgICAgICAgICBwZXJzaXN0ZW5jZToKICAgICAgICAgICAgYWRkVm9sdW1lTW91bnRzOiBbXQogICAgICAgICAgICBhZGRWb2x1bWVzOiBbXQogICAgICAgICAgICB2b2x1bWVDbGFpbToKICAgICAgICAgICAgICBhY2Nlc3NNb2RlczoKICAgICAgICAgICAgICAtIFJlYWRXcml0ZU9uY2UKICAgICAgICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgICAgICAgcmV0ZW50aW9uUG9saWN5OiBSZXRhaW4KICAgICAgICAgICAgICBzaXplOiA1R2kKICAgICAgICAgICAgICBzdG9yYWdlQ2xhc3M6ICIiCiAgICAgICAgICAgIHZvbHVtZUNsYWltVGVtcGxhdGVzOiBbXQogICAgICAgICAgcG9kczoKICAgICAgICAgICAgYW5ub3RhdGlvbnM6IHt9CiAgICAgICAgICAgIGxhYmVsczoge30KICAgICAgICAgIHJlc291cmNlczoKICAgICAgICAgICAgcmVxdWVzdHM6CiAgICAgICAgICAgICAgY3B1OiAyMG0KICAgICAgICAgICAgICBtZW1vcnk6IDE1ME1pCiAgICAgICAgICBzY2hlZHVsaW5nOgogICAgICAgICAgICBhZmZpbml0eToge30KICAgICAgICAgICAgbm9kZVNlbGVjdG9yOiB7fQogICAgICAgICAgICBwb2RNYW5hZ2VtZW50UG9saWN5OiBQYXJhbGxlbAogICAgICAgICAgICBwcmlvcml0eUNsYXNzTmFtZTogIiIKICAgICAgICAgICAgdG9sZXJhdGlvbnM6IFtdCiAgICAgICAgICAgIHRvcG9sb2d5U3ByZWFkQ29uc3RyYWludHM6IFtdCiAgICAgICAgICBzZWN1cml0eToKICAgICAgICAgICAgY29udGFpbmVyU2VjdXJpdHlDb250ZXh0OiB7fQogICAgICAgICAgICBwb2RTZWN1cml0eUNvbnRleHQ6IHt9CiAgICAgIGVtYmVkZGVkOgogICAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICAgICAgbWlncmF0ZUZyb21EZXBsb3llZEV0Y2Q6IGZhbHNlCiAgY29yZWRuczoKICAgIGRlcGxveW1lbnQ6CiAgICAgIGFmZmluaXR5OiB7fQogICAgICBhbm5vdGF0aW9uczoge30KICAgICAgaW1hZ2U6ICIiCiAgICAgIGxhYmVsczoge30KICAgICAgbm9kZVNlbGVjdG9yOiB7fQogICAgICBwb2RzOgogICAgICAgIGFubm90YXRpb25zOiB7fQogICAgICAgIGxhYmVsczoge30KICAgICAgcmVwbGljYXM6IDEKICAgICAgcmVzb3VyY2VzOgogICAgICAgIGxpbWl0czoKICAgICAgICAgIGNwdTogMTAwMG0KICAgICAgICAgIG1lbW9yeTogMTcwTWkKICAgICAgICByZXF1ZXN0czoKICAgICAgICAgIGNwdTogMjBtCiAgICAgICAgICBtZW1vcnk6IDY0TWkKICAgICAgdG9sZXJhdGlvbnM6IFtdCiAgICAgIHRvcG9sb2d5U3ByZWFkQ29uc3RyYWludHM6CiAgICAgIC0gbGFiZWxTZWxlY3RvcjoKICAgICAgICAgIG1hdGNoTGFiZWxzOgogICAgICAgICAgICBrOHMtYXBwOiB2Y2x1c3Rlci1rdWJlLWRucwogICAgICAgIG1heFNrZXc6IDEKICAgICAgICB0b3BvbG9neUtleToga3ViZXJuZXRlcy5pby9ob3N0bmFtZQogICAgICAgIHdoZW5VbnNhdGlzZmlhYmxlOiBEb05vdFNjaGVkdWxlCiAgICBlbWJlZGRlZDogZmFsc2UKICAgIGVuYWJsZWQ6IHRydWUKICAgIG92ZXJ3cml0ZUNvbmZpZzogIiIKICAgIG92ZXJ3cml0ZU1hbmlmZXN0czogIiIKICAgIHByaW9yaXR5Q2xhc3NOYW1lOiAiIgogICAgc2VydmljZToKICAgICAgYW5ub3RhdGlvbnM6IHt9CiAgICAgIGxhYmVsczoge30KICAgICAgc3BlYzoKICAgICAgICB0eXBlOiBDbHVzdGVySVAKICBkaXN0cm86CiAgICBrMHM6CiAgICAgIGNvbW1hbmQ6IFtdCiAgICAgIGNvbmZpZzogIiIKICAgICAgZW5hYmxlZDogZmFsc2UKICAgICAgZXh0cmFBcmdzOiBbXQogICAgICBpbWFnZToKICAgICAgICByZWdpc3RyeTogIiIKICAgICAgICByZXBvc2l0b3J5OiBrMHNwcm9qZWN0L2swcwogICAgICAgIHRhZzogdjEuMzAuMi1rMHMuMAogICAgICBpbWFnZVB1bGxQb2xpY3k6ICIiCiAgICAgIHJlc291cmNlczoKICAgICAgICBsaW1pdHM6CiAgICAgICAgICBjcHU6IDEwMG0KICAgICAgICAgIG1lbW9yeTogMjU2TWkKICAgICAgICByZXF1ZXN0czoKICAgICAgICAgIGNwdTogNDBtCiAgICAgICAgICBtZW1vcnk6IDY0TWkKICAgICAgc2VjdXJpdHlDb250ZXh0OiB7fQogICAgazNzOgogICAgICBjb21tYW5kOiBbXQogICAgICBlbmFibGVkOiB0cnVlCiAgICAgIGV4dHJhQXJnczogW10KICAgICAgaW1hZ2U6CiAgICAgICAgcmVnaXN0cnk6IGRvY2tlci5pbwogICAgICAgIHJlcG9zaXRvcnk6IHJhbmNoZXIvazNzCiAgICAgICAgdGFnOiB2MS4zMS4xLWszczEKICAgICAgaW1hZ2VQdWxsUG9saWN5OiBJZk5vdFByZXNlbnQKICAgICAgcmVzb3VyY2VzOgogICAgICAgIGxpbWl0czoKICAgICAgICAgIG1lbW9yeTogMjU2TWkKICAgICAgICByZXF1ZXN0czoKICAgICAgICAgIGNwdTogMTBtCiAgICAgICAgICBtZW1vcnk6IDY0TWkKICAgICAgc2VjdXJpdHlDb250ZXh0OiB7fQogICAgazhzOgogICAgICBhcGlTZXJ2ZXI6CiAgICAgICAgY29tbWFuZDogW10KICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgZXh0cmFBcmdzOiBbXQogICAgICAgIGltYWdlOgogICAgICAgICAgcmVnaXN0cnk6IHJlZ2lzdHJ5Lms4cy5pbwogICAgICAgICAgcmVwb3NpdG9yeToga3ViZS1hcGlzZXJ2ZXIKICAgICAgICAgIHRhZzogdjEuMzEuMQogICAgICAgIGltYWdlUHVsbFBvbGljeTogIiIKICAgICAgY29udHJvbGxlck1hbmFnZXI6CiAgICAgICAgY29tbWFuZDogW10KICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgZXh0cmFBcmdzOiBbXQogICAgICAgIGltYWdlOgogICAgICAgICAgcmVnaXN0cnk6IHJlZ2lzdHJ5Lms4cy5pbwogICAgICAgICAgcmVwb3NpdG9yeToga3ViZS1jb250cm9sbGVyLW1hbmFnZXIKICAgICAgICAgIHRhZzogdjEuMzEuMQogICAgICAgIGltYWdlUHVsbFBvbGljeTogIiIKICAgICAgZW5hYmxlZDogZmFsc2UKICAgICAgZW52OiBbXQogICAgICByZXNvdXJjZXM6CiAgICAgICAgbGltaXRzOgogICAgICAgICAgY3B1OiAxMDBtCiAgICAgICAgICBtZW1vcnk6IDI1Nk1pCiAgICAgICAgcmVxdWVzdHM6CiAgICAgICAgICBjcHU6IDQwbQogICAgICAgICAgbWVtb3J5OiA2NE1pCiAgICAgIHNjaGVkdWxlcjoKICAgICAgICBjb21tYW5kOiBbXQogICAgICAgIGV4dHJhQXJnczogW10KICAgICAgICBpbWFnZToKICAgICAgICAgIHJlZ2lzdHJ5OiByZWdpc3RyeS5rOHMuaW8KICAgICAgICAgIHJlcG9zaXRvcnk6IGt1YmUtc2NoZWR1bGVyCiAgICAgICAgICB0YWc6IHYxLjMxLjEKICAgICAgICBpbWFnZVB1bGxQb2xpY3k6ICIiCiAgICAgIHNlY3VyaXR5Q29udGV4dDoge30KICAgICAgdmVyc2lvbjogIiIKICBpbmdyZXNzOgogICAgYW5ub3RhdGlvbnM6CiAgICAgIG5naW54LmluZ3Jlc3Mua3ViZXJuZXRlcy5pby9iYWNrZW5kLXByb3RvY29sOiBIVFRQUwogICAgICBuZ2lueC5pbmdyZXNzLmt1YmVybmV0ZXMuaW8vc3NsLXBhc3N0aHJvdWdoOiAidHJ1ZSIKICAgICAgbmdpbnguaW5ncmVzcy5rdWJlcm5ldGVzLmlvL3NzbC1yZWRpcmVjdDogInRydWUiCiAgICBlbmFibGVkOiBmYWxzZQogICAgaG9zdDogbXktaG9zdC5jb20KICAgIGxhYmVsczoge30KICAgIHBhdGhUeXBlOiBJbXBsZW1lbnRhdGlvblNwZWNpZmljCiAgICBzcGVjOgogICAgICB0bHM6IFtdCiAgcHJveHk6CiAgICBiaW5kQWRkcmVzczogMC4wLjAuMAogICAgZXh0cmFTQU5zOiBbXQogICAgcG9ydDogODQ0MwogIHNlcnZpY2U6CiAgICBhbm5vdGF0aW9uczoge30KICAgIGVuYWJsZWQ6IHRydWUKICAgIGh0dHBzTm9kZVBvcnQ6IDAKICAgIGt1YmVsZXROb2RlUG9ydDogMAogICAgbGFiZWxzOiB7fQogICAgc3BlYzoKICAgICAgdHlwZTogQ2x1c3RlcklQCiAgc2VydmljZU1vbml0b3I6CiAgICBhbm5vdGF0aW9uczoge30KICAgIGVuYWJsZWQ6IGZhbHNlCiAgICBsYWJlbHM6IHt9CiAgc3RhdGVmdWxTZXQ6CiAgICBhbm5vdGF0aW9uczoge30KICAgIGFyZ3M6IFtdCiAgICBjb21tYW5kOiBbXQogICAgZW5hYmxlU2VydmljZUxpbmtzOiB0cnVlCiAgICBlbnY6IFtdCiAgICBoaWdoQXZhaWxhYmlsaXR5OgogICAgICBsZWFzZUR1cmF0aW9uOiA2MAogICAgICByZW5ld0RlYWRsaW5lOiA0MAogICAgICByZXBsaWNhczogMQogICAgICByZXRyeVBlcmlvZDogMTUKICAgIGltYWdlOgogICAgICByZWdpc3RyeTogZ2hjci5pbwogICAgICByZXBvc2l0b3J5OiBsb2Z0LXNoL3ZjbHVzdGVyLXBybwogICAgICB0YWc6IDAuMjIuNAogICAgaW1hZ2VQdWxsUG9saWN5OiBJZk5vdFByZXNlbnQKICAgIGxhYmVsczoge30KICAgIHBlcnNpc3RlbmNlOgogICAgICBhZGRWb2x1bWVNb3VudHM6IFtdCiAgICAgIGFkZFZvbHVtZXM6IFtdCiAgICAgIGJpbmFyaWVzVm9sdW1lOgogICAgICAtIGVtcHR5RGlyOiB7fQogICAgICAgIG5hbWU6IGJpbmFyaWVzCiAgICAgIGRhdGFWb2x1bWU6IFtdCiAgICAgIHZvbHVtZUNsYWltOgogICAgICAgIGFjY2Vzc01vZGVzOgogICAgICAgIC0gUmVhZFdyaXRlT25jZQogICAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgICByZXRlbnRpb25Qb2xpY3k6IFJldGFpbgogICAgICAgIHNpemU6IDVHaQogICAgICAgIHN0b3JhZ2VDbGFzczogIiIKICAgICAgdm9sdW1lQ2xhaW1UZW1wbGF0ZXM6IFtdCiAgICBwb2RzOgogICAgICBhbm5vdGF0aW9uczoge30KICAgICAgbGFiZWxzOiB7fQogICAgcHJvYmVzOgogICAgICBsaXZlbmVzc1Byb2JlOgogICAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgcmVhZGluZXNzUHJvYmU6CiAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgICBzdGFydHVwUHJvYmU6CiAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgcmVzb3VyY2VzOgogICAgICBsaW1pdHM6CiAgICAgICAgbWVtb3J5OiAyR2kKICAgICAgcmVxdWVzdHM6CiAgICAgICAgY3B1OiA1MG0KICAgICAgICBtZW1vcnk6IDUxMk1pCiAgICBzY2hlZHVsaW5nOgogICAgICBhZmZpbml0eToge30KICAgICAgbm9kZVNlbGVjdG9yOiB7fQogICAgICBwb2RNYW5hZ2VtZW50UG9saWN5OiBQYXJhbGxlbAogICAgICBwcmlvcml0eUNsYXNzTmFtZTogIiIKICAgICAgdG9sZXJhdGlvbnM6IFtdCiAgICAgIHRvcG9sb2d5U3ByZWFkQ29uc3RyYWludHM6IFtdCiAgICBzZWN1cml0eToKICAgICAgY29udGFpbmVyU2VjdXJpdHlDb250ZXh0OgogICAgICAgIGFsbG93UHJpdmlsZWdlRXNjYWxhdGlvbjogZmFsc2UKICAgICAgcG9kU2VjdXJpdHlDb250ZXh0OiB7fQogICAgd29ya2luZ0RpcjogIiIKZXhwZXJpbWVudGFsOgogIGRlcGxveToKICAgIGhvc3Q6CiAgICAgIG1hbmlmZXN0czogIiIKICAgICAgbWFuaWZlc3RzVGVtcGxhdGU6ICIiCiAgICB2Y2x1c3RlcjoKICAgICAgaGVsbTogW10KICAgICAgbWFuaWZlc3RzOiAiIgogICAgICBtYW5pZmVzdHNUZW1wbGF0ZTogIiIKICBnZW5lcmljU3luYzoKICAgIGNsdXN0ZXJSb2xlOgogICAgICBleHRyYVJ1bGVzOiBbXQogICAgcm9sZToKICAgICAgZXh0cmFSdWxlczogW10KICBpc29sYXRlZENvbnRyb2xQbGFuZToKICAgIGhlYWRsZXNzOiBmYWxzZQogIG11bHRpTmFtZXNwYWNlTW9kZToKICAgIGVuYWJsZWQ6IGZhbHNlCiAgc3luY1NldHRpbmdzOgogICAgZGlzYWJsZVN5bmM6IGZhbHNlCiAgICByZXdyaXRlS3ViZXJuZXRlc1NlcnZpY2U6IGZhbHNlCiAgICBzZXRPd25lcjogdHJ1ZQogICAgdGFyZ2V0TmFtZXNwYWNlOiAiIgpleHBvcnRLdWJlQ29uZmlnOgogIGNvbnRleHQ6ICIiCiAgaW5zZWN1cmU6IGZhbHNlCiAgc2VjcmV0OgogICAgbmFtZTogIiIKICAgIG5hbWVzcGFjZTogIiIKICBzZXJ2ZXI6ICIiCiAgc2VydmljZUFjY291bnQ6CiAgICBjbHVzdGVyUm9sZTogIiIKICAgIG5hbWU6ICIiCiAgICBuYW1lc3BhY2U6ICIiCmV4dGVybmFsOiB7fQppbnRlZ3JhdGlvbnM6CiAgY2VydE1hbmFnZXI6CiAgICBlbmFibGVkOiBmYWxzZQogICAgc3luYzoKICAgICAgZnJvbUhvc3Q6CiAgICAgICAgY2x1c3Rlcklzc3VlcnM6CiAgICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgICBzZWxlY3RvcjoKICAgICAgICAgICAgbGFiZWxzOiB7fQogICAgICB0b0hvc3Q6CiAgICAgICAgY2VydGlmaWNhdGVzOgogICAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgICAgIGlzc3VlcnM6CiAgICAgICAgICBlbmFibGVkOiB0cnVlCiAgZXh0ZXJuYWxTZWNyZXRzOgogICAgZW5hYmxlZDogZmFsc2UKICAgIHN5bmM6CiAgICAgIGNsdXN0ZXJTdG9yZXM6CiAgICAgICAgZW5hYmxlZDogZmFsc2UKICAgICAgICBzZWxlY3RvcjoKICAgICAgICAgIGxhYmVsczoge30KICAgICAgZXh0ZXJuYWxTZWNyZXRzOgogICAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgc3RvcmVzOgogICAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICB3ZWJob29rOgogICAgICBlbmFibGVkOiBmYWxzZQogIGt1YmVWaXJ0OgogICAgZW5hYmxlZDogZmFsc2UKICAgIHN5bmM6CiAgICAgIGRhdGFWb2x1bWVzOgogICAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICAgIHZpcnR1YWxNYWNoaW5lQ2xvbmVzOgogICAgICAgIGVuYWJsZWQ6IHRydWUKICAgICAgdmlydHVhbE1hY2hpbmVJbnN0YW5jZU1pZ3JhdGlvbnM6CiAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgICB2aXJ0dWFsTWFjaGluZUluc3RhbmNlczoKICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgIHZpcnR1YWxNYWNoaW5lUG9vbHM6CiAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgICB2aXJ0dWFsTWFjaGluZXM6CiAgICAgICAgZW5hYmxlZDogdHJ1ZQogICAgd2ViaG9vazoKICAgICAgZW5hYmxlZDogdHJ1ZQogIG1ldHJpY3NTZXJ2ZXI6CiAgICBlbmFibGVkOiBmYWxzZQogICAgbm9kZXM6IHRydWUKICAgIHBvZHM6IHRydWUKbmV0d29ya2luZzoKICBhZHZhbmNlZDoKICAgIGNsdXN0ZXJEb21haW46IGNsdXN0ZXIubG9jYWwKICAgIGZhbGxiYWNrSG9zdENsdXN0ZXI6IGZhbHNlCiAgICBwcm94eUt1YmVsZXRzOgogICAgICBieUhvc3RuYW1lOiB0cnVlCiAgICAgIGJ5SVA6IHRydWUKICByZXBsaWNhdGVTZXJ2aWNlczoKICAgIGZyb21Ib3N0OiBbXQogICAgdG9Ib3N0OiBbXQogIHJlc29sdmVETlM6IFtdCnBsdWdpbnM6IHt9CnBvbGljaWVzOgogIGNlbnRyYWxBZG1pc3Npb246CiAgICBtdXRhdGluZ1dlYmhvb2tzOiBbXQogICAgdmFsaWRhdGluZ1dlYmhvb2tzOiBbXQogIGxpbWl0UmFuZ2U6CiAgICBhbm5vdGF0aW9uczoge30KICAgIGRlZmF1bHQ6CiAgICAgIGNwdTogIjEiCiAgICAgIGVwaGVtZXJhbC1zdG9yYWdlOiA4R2kKICAgICAgbWVtb3J5OiA1MTJNaQogICAgZGVmYXVsdFJlcXVlc3Q6CiAgICAgIGNwdTogMTAwbQogICAgICBlcGhlbWVyYWwtc3RvcmFnZTogM0dpCiAgICAgIG1lbW9yeTogMTI4TWkKICAgIGVuYWJsZWQ6IGF1dG8KICAgIGxhYmVsczoge30KICAgIG1heDoge30KICAgIG1pbjoge30KICBuZXR3b3JrUG9saWN5OgogICAgYW5ub3RhdGlvbnM6IHt9CiAgICBlbmFibGVkOiBmYWxzZQogICAgZmFsbGJhY2tEbnM6IDguOC44LjgKICAgIGxhYmVsczoge30KICAgIG91dGdvaW5nQ29ubmVjdGlvbnM6CiAgICAgIGlwQmxvY2s6CiAgICAgICAgY2lkcjogMC4wLjAuMC8wCiAgICAgICAgZXhjZXB0OgogICAgICAgIC0gMTAwLjY0LjAuMC8xMAogICAgICAgIC0gMTI3LjAuMC4wLzgKICAgICAgICAtIDEwLjAuMC4wLzgKICAgICAgICAtIDE3Mi4xNi4wLjAvMTIKICAgICAgICAtIDE5Mi4xNjguMC4wLzE2CiAgICAgIHBsYXRmb3JtOiB0cnVlCiAgcmVzb3VyY2VRdW90YToKICAgIGFubm90YXRpb25zOiB7fQogICAgZW5hYmxlZDogYXV0bwogICAgbGFiZWxzOiB7fQogICAgcXVvdGE6CiAgICAgIGNvdW50L2NvbmZpZ21hcHM6IDEwMAogICAgICBjb3VudC9lbmRwb2ludHM6IDQwCiAgICAgIGNvdW50L3BlcnNpc3RlbnR2b2x1bWVjbGFpbXM6IDIwCiAgICAgIGNvdW50L3BvZHM6IDIwCiAgICAgIGNvdW50L3NlY3JldHM6IDEwMAogICAgICBjb3VudC9zZXJ2aWNlczogMjAKICAgICAgbGltaXRzLmNwdTogMjAKICAgICAgbGltaXRzLmVwaGVtZXJhbC1zdG9yYWdlOiAxNjBHaQogICAgICBsaW1pdHMubWVtb3J5OiA0MEdpCiAgICAgIHJlcXVlc3RzLmNwdTogMTAKICAgICAgcmVxdWVzdHMuZXBoZW1lcmFsLXN0b3JhZ2U6IDYwR2kKICAgICAgcmVxdWVzdHMubWVtb3J5OiAyMEdpCiAgICAgIHJlcXVlc3RzLnN0b3JhZ2U6IDEwMEdpCiAgICAgIHNlcnZpY2VzLmxvYWRiYWxhbmNlcnM6IDEKICAgICAgc2VydmljZXMubm9kZXBvcnRzOiAwCiAgICBzY29wZVNlbGVjdG9yOgogICAgICBtYXRjaEV4cHJlc3Npb25zOiBbXQogICAgc2NvcGVzOiBbXQpyYmFjOgogIGNsdXN0ZXJSb2xlOgogICAgZW5hYmxlZDogYXV0bwogICAgZXh0cmFSdWxlczogW10KICAgIG92ZXJ3cml0ZVJ1bGVzOiBbXQogIHJvbGU6CiAgICBlbmFibGVkOiB0cnVlCiAgICBleHRyYVJ1bGVzOiBbXQogICAgb3ZlcndyaXRlUnVsZXM6CiAgICAtIGFwaUdyb3VwczoKICAgICAgLSAiIgogICAgICByZXNvdXJjZXM6CiAgICAgIC0gY29uZmlnbWFwcwogICAgICAtIHNlY3JldHMKICAgICAgLSBzZXJ2aWNlcwogICAgICAtIHBvZHMKICAgICAgLSBwb2RzL2F0dGFjaAogICAgICAtIHBvZHMvcG9ydGZvcndhcmQKICAgICAgLSBwb2RzL2V4ZWMKICAgICAgLSBwZXJzaXN0ZW50dm9sdW1lY2xhaW1zCiAgICAgIHZlcmJzOgogICAgICAtIGNyZWF0ZQogICAgICAtIGRlbGV0ZQogICAgICAtIHBhdGNoCiAgICAgIC0gdXBkYXRlCiAgICAgIC0gZ2V0CiAgICAgIC0gbGlzdAogICAgICAtIHdhdGNoCiAgICAtIGFwaUdyb3VwczoKICAgICAgLSBhcHBzCiAgICAgIHJlc291cmNlczoKICAgICAgLSBzdGF0ZWZ1bHNldHMKICAgICAgLSByZXBsaWNhc2V0cwogICAgICAtIGRlcGxveW1lbnRzCiAgICAgIHZlcmJzOgogICAgICAtIGdldAogICAgICAtIGxpc3QKICAgICAgLSB3YXRjaAogICAgLSBhcGlHcm91cHM6CiAgICAgIC0gIiIKICAgICAgcmVzb3VyY2VzOgogICAgICAtIGVuZHBvaW50cwogICAgICB2ZXJiczoKICAgICAgLSBjcmVhdGUKICAgICAgLSBkZWxldGUKICAgICAgLSBwYXRjaAogICAgICAtIHVwZGF0ZQogICAgLSBhcGlHcm91cHM6CiAgICAgIC0gIiIKICAgICAgcmVzb3VyY2VzOgogICAgICAtIGVuZHBvaW50cwogICAgICAtIGV2ZW50cwogICAgICAtIHBvZHMvbG9nCiAgICAgIHZlcmJzOgogICAgICAtIGdldAogICAgICAtIGxpc3QKICAgICAgLSB3YXRjaAogICAgLSBhcGlHcm91cHM6CiAgICAgIC0gbmV0d29ya2luZy5rOHMuaW8KICAgICAgcmVzb3VyY2VzOgogICAgICAtIGluZ3Jlc3NlcwogICAgICB2ZXJiczoKICAgICAgLSBjcmVhdGUKICAgICAgLSBkZWxldGUKICAgICAgLSBwYXRjaAogICAgICAtIHVwZGF0ZQogICAgICAtIGdldAogICAgICAtIGxpc3QKICAgICAgLSB3YXRjaApzeW5jOgogIGZyb21Ib3N0OgogICAgY3NpRHJpdmVyczoKICAgICAgZW5hYmxlZDogYXV0bwogICAgY3NpTm9kZXM6CiAgICAgIGVuYWJsZWQ6IGF1dG8KICAgIGNzaVN0b3JhZ2VDYXBhY2l0aWVzOgogICAgICBlbmFibGVkOiBhdXRvCiAgICBldmVudHM6CiAgICAgIGVuYWJsZWQ6IHRydWUKICAgIGluZ3Jlc3NDbGFzc2VzOgogICAgICBlbmFibGVkOiBmYWxzZQogICAgbm9kZXM6CiAgICAgIGNsZWFySW1hZ2VTdGF0dXM6IGZhbHNlCiAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICAgIHNlbGVjdG9yOgogICAgICAgIGFsbDogZmFsc2UKICAgICAgICBsYWJlbHM6IHt9CiAgICAgIHN5bmNCYWNrQ2hhbmdlczogZmFsc2UKICAgIHByaW9yaXR5Q2xhc3NlczoKICAgICAgZW5hYmxlZDogZmFsc2UKICAgIHJ1bnRpbWVDbGFzc2VzOgogICAgICBlbmFibGVkOiBmYWxzZQogICAgc3RvcmFnZUNsYXNzZXM6CiAgICAgIGVuYWJsZWQ6IGF1dG8KICAgIHZvbHVtZVNuYXBzaG90Q2xhc3NlczoKICAgICAgZW5hYmxlZDogZmFsc2UKICB0b0hvc3Q6CiAgICBjb25maWdNYXBzOgogICAgICBhbGw6IGZhbHNlCiAgICAgIGVuYWJsZWQ6IHRydWUKICAgIGVuZHBvaW50czoKICAgICAgZW5hYmxlZDogdHJ1ZQogICAgaW5ncmVzc2VzOgogICAgICBlbmFibGVkOiB0cnVlCiAgICBuZXR3b3JrUG9saWNpZXM6CiAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICBwZXJzaXN0ZW50Vm9sdW1lQ2xhaW1zOgogICAgICBlbmFibGVkOiB0cnVlCiAgICBwZXJzaXN0ZW50Vm9sdW1lczoKICAgICAgZW5hYmxlZDogZmFsc2UKICAgIHBvZERpc3J1cHRpb25CdWRnZXRzOgogICAgICBlbmFibGVkOiBmYWxzZQogICAgcG9kczoKICAgICAgZW5hYmxlZDogdHJ1ZQogICAgICBlbmZvcmNlVG9sZXJhdGlvbnM6IFtdCiAgICAgIHJld3JpdGVIb3N0czoKICAgICAgICBlbmFibGVkOiB0cnVlCiAgICAgICAgaW5pdENvbnRhaW5lcjoKICAgICAgICAgIGltYWdlOiBsaWJyYXJ5L2FscGluZTozLjIwCiAgICAgICAgICByZXNvdXJjZXM6CiAgICAgICAgICAgIGxpbWl0czoKICAgICAgICAgICAgICBjcHU6IDMwbQogICAgICAgICAgICAgIG1lbW9yeTogNjRNaQogICAgICAgICAgICByZXF1ZXN0czoKICAgICAgICAgICAgICBjcHU6IDMwbQogICAgICAgICAgICAgIG1lbW9yeTogNjRNaQogICAgICB0cmFuc2xhdGVJbWFnZToge30KICAgICAgdXNlU2VjcmV0c0ZvclNBVG9rZW5zOiBmYWxzZQogICAgcHJpb3JpdHlDbGFzc2VzOgogICAgICBlbmFibGVkOiBmYWxzZQogICAgc2VjcmV0czoKICAgICAgYWxsOiBmYWxzZQogICAgICBlbmFibGVkOiB0cnVlCiAgICBzZXJ2aWNlQWNjb3VudHM6CiAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICBzZXJ2aWNlczoKICAgICAgZW5hYmxlZDogdHJ1ZQogICAgc3RvcmFnZUNsYXNzZXM6CiAgICAgIGVuYWJsZWQ6IGZhbHNlCiAgICB2b2x1bWVTbmFwc2hvdENvbnRlbnRzOgogICAgICBlbmFibGVkOiBmYWxzZQogICAgdm9sdW1lU25hcHNob3RzOgogICAgICBlbmFibGVkOiBmYWxzZQp0ZWxlbWV0cnk6CiAgZW5hYmxlZDogZmFsc2U=
+kind: Secret
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: vc-config-c-green-test-1234
+  namespace: target-namespace
+type: Opaque
+---
+apiVersion: v1
+data:
+  coredns.yaml: "apiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: coredns\n\
+    \  namespace: kube-system\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind:\
+    \ ClusterRole\nmetadata:\n  labels:\n    kubernetes.io/bootstrapping: rbac-defaults\n\
+    \  name: system:coredns\nrules:\n  - apiGroups:\n      - \"\"\n    resources:\n\
+    \      - endpoints\n      - services\n      - pods\n      - namespaces\n    verbs:\n\
+    \      - list\n      - watch\n  - apiGroups:\n      - discovery.k8s.io\n    resources:\n\
+    \      - endpointslices\n    verbs:\n      - list\n      - watch\n---\napiVersion:\
+    \ rbac.authorization.k8s.io/v1\nkind: ClusterRoleBinding\nmetadata:\n  annotations:\n\
+    \    rbac.authorization.kubernetes.io/autoupdate: \"true\"\n  labels:\n    kubernetes.io/bootstrapping:\
+    \ rbac-defaults\n  name: system:coredns\nroleRef:\n  apiGroup: rbac.authorization.k8s.io\n\
+    \  kind: ClusterRole\n  name: system:coredns\nsubjects:\n  - kind: ServiceAccount\n\
+    \    name: coredns\n    namespace: kube-system\n---\napiVersion: v1\nkind: ConfigMap\n\
+    metadata:\n  name: coredns\n  namespace: kube-system\ndata:\n  Corefile: |-\n\
+    \    .:1053 {\n        errors\n        health\n        ready\n        rewrite\
+    \ name regex .*\\.nodes\\.vcluster\\.com kubernetes.default.svc.cluster.local\n\
+    \        kubernetes cluster.local in-addr.arpa ip6.arpa {\n            pods insecure\n\
+    \            fallthrough in-addr.arpa ip6.arpa\n        }\n        hosts /etc/NodeHosts\
+    \ {\n            ttl 60\n            reload 15s\n            fallthrough\n   \
+    \     }\n        prometheus :9153\n        forward . /etc/resolv.conf\n      \
+    \  cache 30\n        loop\n        loadbalance\n    }\n  \n    import /etc/coredns/custom/*.server\n\
+    \  NodeHosts: \"\"\n---\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name:\
+    \ coredns\n  namespace: kube-system\n  labels:\n    k8s-app: vcluster-kube-dns\n\
+    \    kubernetes.io/name: \"CoreDNS\"\nspec:\n  replicas: 1\n  strategy:\n    type:\
+    \ RollingUpdate\n    rollingUpdate:\n      maxUnavailable: 1\n  selector:\n  \
+    \  matchLabels:\n      k8s-app: vcluster-kube-dns\n  template:\n    metadata:\n\
+    \      labels:\n        k8s-app: vcluster-kube-dns\n    spec:\n      priorityClassName:\
+    \ \"\"\n      serviceAccountName: coredns\n      nodeSelector:\n        kubernetes.io/os:\
+    \ linux\n      topologySpreadConstraints:\n        - labelSelector:\n        \
+    \    matchLabels:\n              k8s-app: vcluster-kube-dns\n          maxSkew:\
+    \ 1\n          topologyKey: kubernetes.io/hostname\n          whenUnsatisfiable:\
+    \ DoNotSchedule\n      containers:\n        - name: coredns\n          image:\
+    \ {{.IMAGE}}\n          imagePullPolicy: IfNotPresent\n          resources:\n\
+    \            limits:\n              cpu: 1000m\n              memory: 170Mi\n\
+    \            requests:\n              cpu: 20m\n              memory: 64Mi\n \
+    \         args: [ \"-conf\", \"/etc/coredns/Corefile\" ]\n          volumeMounts:\n\
+    \            - name: config-volume\n              mountPath: /etc/coredns\n  \
+    \            readOnly: true\n            - name: custom-config-volume\n      \
+    \        mountPath: /etc/coredns/custom\n              readOnly: true\n      \
+    \    securityContext:\n            runAsNonRoot: true\n            runAsUser:\
+    \ {{.RUN_AS_USER}}\n            runAsGroup: {{.RUN_AS_GROUP}}\n            allowPrivilegeEscalation:\
+    \ false\n            capabilities:\n              add:\n                - NET_BIND_SERVICE\n\
+    \              drop:\n                - ALL\n            readOnlyRootFilesystem:\
+    \ true\n          livenessProbe:\n            httpGet:\n              path: /health\n\
+    \              port: 8080\n              scheme: HTTP\n            initialDelaySeconds:\
+    \ 60\n            periodSeconds: 10\n            timeoutSeconds: 1\n         \
+    \   successThreshold: 1\n            failureThreshold: 3\n          readinessProbe:\n\
+    \            httpGet:\n              path: /ready\n              port: 8181\n\
+    \              scheme: HTTP\n            initialDelaySeconds: 0\n            periodSeconds:\
+    \ 2\n            timeoutSeconds: 1\n            successThreshold: 1\n        \
+    \    failureThreshold: 3\n      dnsPolicy: Default\n      volumes:\n        -\
+    \ name: config-volume\n          configMap:\n            name: coredns\n     \
+    \       items:\n              - key: Corefile\n                path: Corefile\n\
+    \              - key: NodeHosts\n                path: NodeHosts\n        - name:\
+    \ custom-config-volume\n          configMap:\n            name: coredns-custom\n\
+    \            optional: true\n---\napiVersion: v1\nkind: Service\nmetadata:\n \
+    \ name: kube-dns\n  namespace: kube-system\n  annotations:\n    prometheus.io/port:\
+    \ \"9153\"\n    prometheus.io/scrape: \"true\"\n  labels:\n    k8s-app: vcluster-kube-dns\n\
+    \    kubernetes.io/cluster-service: \"true\"\n    kubernetes.io/name: \"CoreDNS\"\
+    \nspec:\n  type: ClusterIP\n  selector:\n    k8s-app: vcluster-kube-dns\n  ports:\n\
+    \    - name: dns\n      port: 53\n      targetPort: 1053\n      protocol: UDP\n\
+    \    - name: dns-tcp\n      port: 53\n      targetPort: 1053\n      protocol:\
+    \ TCP\n    - name: metrics\n      port: 9153\n      protocol: TCP"
+kind: ConfigMap
+metadata:
+  name: vc-coredns-c-green-test-1234
+  namespace: target-namespace
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: vc-c-green-test-1234
+  namespace: target-namespace
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - configmaps
+      - secrets
+      - services
+      - pods
+      - pods/attach
+      - pods/portforward
+      - pods/exec
+      - persistentvolumeclaims
+    verbs:
+      - create
+      - delete
+      - patch
+      - update
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - statefulsets
+      - replicasets
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - endpoints
+    verbs:
+      - create
+      - delete
+      - patch
+      - update
+  - apiGroups:
+      - ''
+    resources:
+      - endpoints
+      - events
+      - pods/log
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+    verbs:
+      - create
+      - delete
+      - patch
+      - update
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: vc-c-green-test-1234
+  namespace: target-namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: vc-c-green-test-1234
+subjects:
+  - kind: ServiceAccount
+    name: vc-c-green-test-1234
+    namespace: target-namespace
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: c-green-test-1234-headless
+  namespace: target-namespace
+spec:
+  clusterIP: None
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+  publishNotReadyAddresses: true
+  selector:
+    app: vcluster
+    release: c-green-test-1234
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: c-green-test-1234
+  namespace: target-namespace
+spec:
+  ports:
+    - name: https
+      nodePort: 0
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+    - name: kubelet
+      nodePort: 0
+      port: 10250
+      protocol: TCP
+      targetPort: 8443
+  selector:
+    app: vcluster
+    release: c-green-test-1234
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: vcluster
+    chart: vcluster-0.22.4
+    heritage: Helm
+    release: c-green-test-1234
+  name: c-green-test-1234
+  namespace: target-namespace
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+  podManagementPolicy: Parallel
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vcluster
+      release: c-green-test-1234
+  serviceName: c-green-test-1234-headless
+  template:
+    metadata:
+      annotations:
+        vClusterConfigHash: 467d4cd60d766081256a2533ab2ae43d55f28cf30fb9ffa4234c3fd35c36b22a
+      labels:
+        app: vcluster
+        release: c-green-test-1234
+    spec:
+      containers:
+        - env:
+            - name: VCLUSTER_NAME
+              value: c-green-test-1234
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          image: ghcr.io/loft-sh/vcluster-pro:0.22.4
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /healthz
+              port: 8443
+              scheme: HTTPS
+            initialDelaySeconds: 60
+            periodSeconds: 2
+          name: syncer
+          readinessProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /readyz
+              port: 8443
+              scheme: HTTPS
+            periodSeconds: 2
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+          startupProbe:
+            failureThreshold: 300
+            httpGet:
+              path: /readyz
+              port: 8443
+              scheme: HTTPS
+            periodSeconds: 6
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /binaries
+              name: binaries
+            - mountPath: /pki
+              name: certs
+            - mountPath: /.cache/helm
+              name: helm-cache
+            - mountPath: /etc/rancher
+              name: k3s-config
+            - mountPath: /var/vcluster
+              name: vcluster-config
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /manifests/coredns
+              name: coredns
+              readOnly: true
+      enableServiceLinks: true
+      initContainers:
+        - args:
+            - -c
+            - cp /bin/k3s /binaries/k3s
+          command:
+            - /bin/sh
+          image: docker.io/rancher/k3s:v1.31.1-k3s1
+          imagePullPolicy: IfNotPresent
+          name: vcluster
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
+          securityContext: {}
+          volumeMounts:
+            - mountPath: /binaries
+              name: binaries
+      serviceAccountName: vc-c-green-test-1234
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - emptyDir: {}
+          name: helm-cache
+        - emptyDir: {}
+          name: binaries
+        - emptyDir: {}
+          name: tmp
+        - emptyDir: {}
+          name: certs
+        - emptyDir: {}
+          name: k3s-config
+        - name: vcluster-config
+          secret:
+            secretName: vc-config-c-green-test-1234
+        - configMap:
+            name: vc-coredns-c-green-test-1234
+          name: coredns
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
