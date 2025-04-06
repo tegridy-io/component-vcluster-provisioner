@@ -59,15 +59,14 @@ infrastructure:
 Configure the namespace of the target infrastructure.
 
 
-== `components.vcluster`
+== `controlPlane`
 
 [horizontal]
 type:: dictionary
 
-Configure the vcluster component.
+Configure the vcluster statefull set.
 
-
-=== `components.vcluster.resources`
+=== `controlPlane.resources`
 
 [horizontal]
 type:: dictionary
@@ -75,19 +74,18 @@ default::
 +
 [source,yaml]
 ----
-components:
-  vcluster:
-    resources:
-      requests:
-        cpu: 50m
-        memory: 512Mi
-      limits:
-        memory: 2Gi
+controlPlane:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 512Mi
+    limits:
+      memory: 2Gi
 ----
 
 Configure the resources for the vcluster component.
 
-=== `components.vcluster.storageClass`
+=== `controlPlane.storageClass`
 
 [horizontal]
 type:: string
@@ -95,7 +93,7 @@ default:: ''
 
 The storage class to use for the vcluster component.
 
-=== `components.vcluster.storageSize`
+=== `controlPlane.storageSize`
 
 [horizontal]
 type:: string
@@ -104,22 +102,27 @@ default:: '5Gi'
 The storage size to use for the vcluster component.
 
 
-== `components.k3s`
+== `distribution`
 
 [horizontal]
 type:: dictionary
 
-Configure the k3s component.
+Configure the vcluster distribution.
 
-=== `components.k3s.enabled`
+=== `distribution.type`
 
 [horizontal]
-type:: boolean
-default:: true
+type:: string
+default:: 'k3s'
 
-Use K3s as the vCluster distribution.
+Define the distribution to use.
 
-=== `components.k3s.resources`
+[NOTE]
+====
+Only type `k8s`, `k3s` and `k0s` are supported.
+====
+
+=== `distribution.resources`
 
 [horizontal]
 type:: dictionary
@@ -127,27 +130,26 @@ default::
 +
 [source,yaml]
 ----
-components:
-  k3s:
-    resources:
-      requests:
-        cpu: 10m
-        memory: 64Mi
-      limits:
-        memory: 256Mi
+distribution:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 64Mi
+    limits:
+      memory: 256Mi
 ----
 
-Configure the resources for the k3s component.
+Configure the resources for the distribution.
 
 
-== `components.ingress`
+== `ingress`
 
 [horizontal]
 type:: dictionary
 
 Configure the ingress component.
 
-=== `components.ingress.enabled`
+=== `ingress.enabled`
 
 [horizontal]
 type:: boolean
@@ -155,7 +157,7 @@ default:: true
 
 Enable the ingress component.
 
-=== `components.ingress.host`
+=== `ingress.host`
 
 [horizontal]
 type:: string
@@ -163,7 +165,7 @@ default:: 'api.mycluster.local'
 
 The host to use for the ingress component.
 
-=== `components.ingress.annotations` and `components.ingress.labels`
+=== `ingress.annotations` and `ingress.labels`
 
 [horizontal]
 type:: dictionary
