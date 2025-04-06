@@ -6,7 +6,7 @@ parameters:
     charts:
       vcluster:
         source: https://charts.loft.sh
-        version: 0.22.4
+        version: 0.24.0
       cloudflared:
         source: https://cloudflare.github.io/helm-charts
         version: 0.3.2
