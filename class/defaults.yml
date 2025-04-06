@@ -2,4 +2,60 @@ parameters:
   vcluster_provisioner:
     =_metadata:
       multi_tenant: true
-    namespace: syn-vcluster-provisioner
+
+    charts:
+      vcluster:
+        source: https://charts.loft.sh
+        version: 0.22.4
+      cloudflared:
+        source: https://cloudflare.github.io/helm-charts
+        version: 0.3.2
+
+    images:
+      vcluster:
+        registry: ghcr.io
+        repository: loft-sh/vcluster-pro
+        tag: 0.22.4
+      k3s:
+        registry: docker.io
+        repository: rancher/k3s
+        tag: v1.31.1-k3s1
+      kubectl:
+        registry: quay.io
+        repository: appuio/oc
+        tag: v4.17
+      # kube_apiserver:
+      #   registry: registry.k8s.io
+      #   repository: kube-apiserver
+      # kube_controller_manager:
+      #   registry: registry.k8s.io
+      #   repository: kube-controller-manager
+      # kube_scheduler:
+      #   registry: registry.k8s.io
+      #   repository: kube-scheduler
+      # k0s:
+      #   registry: docker.io
+      #   repository: k0sproject/k0s
+
+    infrastructure:
+      type: kubernetes
+      namespace:
+        annotations: {}
+        labels: {}
+        name: target-namespace
+
+    components:
+      vcluster:
+        storageClass: ''
+        storageSize: 5Gi
+        resources: {}
+      k3s:
+        enabled: true
+        resources: {}
+
+    sync:
+      fromHost: {}
+      toHost: {}
+
+    helmValues:
+      vcluster: {}

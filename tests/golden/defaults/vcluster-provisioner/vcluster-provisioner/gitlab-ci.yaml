@@ -1,0 +1,28 @@
+.openshift:
+  before_script:
+    - oc login --server=${K8S_API_URL} --token=${K8S_TOKEN}
+  image: quay.io/appuio/oc:v4.17
+apply:
+  extends:
+    - .openshift
+  only:
+    - master
+  script:
+    - kubectl apply -f ${MANIFESTS_PATH}
+  stage: apply
+  when: manual
+diff:
+  extends:
+    - .openshift
+  only:
+    - master
+  script:
+    - kubectl diff -f ${MANIFESTS_PATH} || [ $? -eq 1 ]
+  stage: diff
+stages:
+  - diff
+  - apply
+variables:
+  K8S_API_URL: ${K8S_API_URL}
+  K8S_TOKEN: ${K8S_TOKEN}
+  MANIFESTS_PATH: manifests/vcluster-provisioner/10_helmchart.yaml
