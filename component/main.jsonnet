@@ -26,7 +26,7 @@ local route = {
     namespace: params.infrastructure.namespace.name,
   },
   spec: {
-    host: params.components.ingress.host,
+    host: params.ingress.host,
     port: {
       targetPort: 'https',
     },

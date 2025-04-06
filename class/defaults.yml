@@ -26,18 +26,22 @@ parameters:
         registry: quay.io
         repository: appuio/oc
         tag: v4.17
-      # kube_apiserver:
-      #   registry: registry.k8s.io
-      #   repository: kube-apiserver
-      # kube_controller_manager:
-      #   registry: registry.k8s.io
-      #   repository: kube-controller-manager
-      # kube_scheduler:
-      #   registry: registry.k8s.io
-      #   repository: kube-scheduler
-      # k0s:
-      #   registry: docker.io
-      #   repository: k0sproject/k0s
+      kube_apiserver:
+        registry: registry.k8s.io
+        repository: kube-apiserver
+        tag: v1.32.1
+      kube_controller_manager:
+        registry: registry.k8s.io
+        repository: kube-controller-manager
+        tag: v1.32.1
+      kube_scheduler:
+        registry: registry.k8s.io
+        repository: kube-scheduler
+        tag: v1.32.1
+      k0s:
+        registry: docker.io
+        repository: k0sproject/k0s
+        tag: v1.30.2-k0s.0
 
     infrastructure:
       type: kubernetes
@@ -46,19 +50,21 @@ parameters:
         labels: {}
         name: target-namespace
 
-    components:
-      vcluster:
-        storageClass: ''
-        storageSize: 5Gi
-        resources: {}
-      k3s:
-        enabled: true
-        resources: {}
-      ingress:
-        enabled: true
-        host: 'api.mycluster.local'
-        labels: {}
-        annotations: {}
+    controlPlane:
+      storageClass: ''
+      storageSize: 5Gi
+      replicas: 1
+      resources: {}
+
+    distribution:
+      type: k3s
+      resources: {}
+
+    ingress:
+      enabled: true
+      host: 'api.mycluster.local'
+      labels: {}
+      annotations: {}
 
     sync:
       fromHost: {}
