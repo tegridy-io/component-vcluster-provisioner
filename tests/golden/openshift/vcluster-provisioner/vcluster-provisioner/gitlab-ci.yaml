@@ -1,7 +1,7 @@
 .openshift:
   before_script:
     - oc login --server=${K8S_API_URL} --token=${K8S_TOKEN}
-  image: quay.io/appuio/oc:v4.17
+  image: quay.io/appuio/oc:v4.18
 apply:
   extends:
     - .openshift
