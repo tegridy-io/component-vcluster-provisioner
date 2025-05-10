@@ -25,7 +25,7 @@ parameters:
       kubectl:
         registry: quay.io
         repository: appuio/oc
-        tag: v4.17
+        tag: v4.18
       kube_apiserver:
         registry: registry.k8s.io
         repository: kube-apiserver
