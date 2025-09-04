@@ -21,7 +21,7 @@ parameters:
       k3s:
         registry: docker.io
         repository: rancher/k3s
-        tag: v1.32.5-k3s1
+        tag: v1.32.8-k3s1
       kubectl:
         registry: quay.io
         repository: appuio/oc
