@@ -17,7 +17,7 @@ parameters:
       vcluster:
         registry: ghcr.io
         repository: loft-sh/vcluster-pro
-        tag: 0.24.0
+        tag: 0.24.2
       k3s:
         registry: docker.io
         repository: rancher/k3s
