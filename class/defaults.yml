@@ -21,11 +21,11 @@ parameters:
       k3s:
         registry: docker.io
         repository: rancher/k3s
-        tag: v1.32.13-k3s1
+        tag: v1.35.2-k3s1
       kubectl:
         registry: quay.io
         repository: appuio/oc
-        tag: v4.17
+        tag: v4.20
       kube_apiserver:
         registry: registry.k8s.io
         repository: kube-apiserver
