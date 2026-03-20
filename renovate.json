@@ -55,6 +55,10 @@
         "^registry.k8s.io/kube-controller-manager$",
         "^registry.k8s.io/kube-scheduler$"
       ]
+    },
+    {
+      "matchPackageNames": ["ghcr.io/loft-sh/vcluster-pro", "docker.io/k0sproject/k0s", "docker.io/rancher/k3s", "quay.io/appuio/oc", "registry.k8s.io/kube-controller-manager", "registry.k8s.io/kube-scheduler"],
+      "groupName": "dependency Grafana"
     }
   ]
 }
