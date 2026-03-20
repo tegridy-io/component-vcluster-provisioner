@@ -49,6 +49,7 @@
         "bump:minor"
       ],
       "matchPackagePatterns": [
+        "^docker.io/k0sproject/k0s$",
         "^docker.io/rancher/k3s$",
         "^quay.io/appuio/oc$",
         "^registry.k8s.io/kube-controller-manager$",
