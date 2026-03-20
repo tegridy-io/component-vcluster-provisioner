@@ -17,7 +17,7 @@
       "automerge_patch_v0": "y",
       "automerge_patch_regexp_blocklist": "",
       "automerge_patch_v0_regexp_allowlist": "",
-      "automerge_minor_regexp_allowlist": "^docker.io/rancher/k3s$;^quay.io/appuio/oc$",
+      "automerge_minor_regexp_allowlist": "^docker.io/rancher/k3s$;^quay.io/appuio/oc$;^registry.k8s.io/kube-controller-manager$",
       "auto_release": "y",
       "copyright_holder": "VSHN AG <info@vshn.ch>",
       "copyright_year": "2025",

@@ -50,7 +50,8 @@
       ],
       "matchPackagePatterns": [
         "^docker.io/rancher/k3s$",
-        "^quay.io/appuio/oc$"
+        "^quay.io/appuio/oc$",
+        "^registry.k8s.io/kube-controller-manager$"
       ]
     }
   ]
