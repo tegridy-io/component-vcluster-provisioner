@@ -33,11 +33,11 @@ parameters:
       kube_controller_manager:
         registry: registry.k8s.io
         repository: kube-controller-manager
-        tag: v1.35.4
+        tag: v1.36.0
       kube_scheduler:
         registry: registry.k8s.io
         repository: kube-scheduler
-        tag: v1.35.4
+        tag: v1.36.0
       k0s:
         registry: docker.io
         repository: k0sproject/k0s
